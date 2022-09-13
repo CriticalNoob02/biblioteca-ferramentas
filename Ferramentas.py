@@ -2,7 +2,7 @@
 import random
 import re
 
-#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Segurança, retorna variavel False or True;
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Verificadores, retorna variavel False or True;
 
 ## Senhas, 1- Maior ou igual a 8 digitos / 2- Conter 1 ou mais caracteres especiais / 3- Conter 3 ou mais números;
 def verificarSenha(Senha):
@@ -182,3 +182,37 @@ def gerarTokens():
     token =''.join(tokenL)
     return token
 
+def gerarDataAniversário():
+    pass
+
+def gerarCPF():
+    Verificação = False
+    while not Verificação:
+        ## Declarando Váriaveis;
+        cpf1 = []
+        contador = 0
+        ## Criação de CPF;
+        for i in range (1,12):
+            i = random.randint(0,9)
+            cpf1.append(i)
+        cpf = "".join(cpf1)
+        print(cpf)
+
+
+ ## Declarando Váriaveis;
+cpf1 = []
+## Criação de CPF;
+for i in range (1,12):
+    i = random.randint(0,9)
+    cpf1.append(i)
+cpf1 = str(cpf1)
+cpf = "".join(cpf1)
+print(cpf)
+        
+
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Modo de Uso;
+
+# Importe o arquivo "Ferramentas.py";
+# Crie um variavel para receber a informação da função EX: nome = gerarNome() ;
+# Nos métodos de Verificação, é nescessário inserir a informação na função, e ela vai te retornar True ou False;
+# Faça um bom uso e fique a vontade para acrescentar outras informações no código;
