@@ -1,6 +1,60 @@
 ## Importações;
 import random
 import re
+import os
+
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Modo de Uso;
+
+def instruções():
+    os.system("cls")
+    print("\033[42m#######################################################\033[40m \033[35mBem-vindo a Biblioteca de Ferramentas\033[37m \033[42m#######################################################\033[40m")
+    print("")
+    print("Aqui você ira ver algumas instruções Básicas para o uso das funções")
+    print("Para iniciar...")
+    print("")
+    print("Importe o arquivo 'Ferramentas.py' para seu projeto, e a seguir importe as funções desejadas de cada arquivo;")
+    print("")
+    print("\033[32m-=-=-=-=-=-=-=-= Funções de Verificação...\033[37m")
+    print("")
+    print("São funções que iram retornar se a informação inserida é True ou False então siga os passos seguintes:")
+    print("")
+    print("1- Crie uma variavel para receber a resposta da função Ex: 'verificação = verificarSenha(senha)'")
+    print("2- Todas as funções precisam que seja inserida um argumento a verificar")
+    print("3- Algumas das funções (ex:Verificador de CPF) recebem argumento no formato 'String' ao inves de valor númerico, mude o formato se ocorrer este erro: ' 'int' object is not iterable' '")
+    print("")
+    print("\033[32m-=-=-=-=-=-=-=-= Funções de Geração...\033[37m")
+    print("")
+    print("São funções que iram retornar a própria informação para uma variavel sem precisar de nenhum argumento;")
+    print("")
+    print("1- Ex = cpf = gerarCPF()")
+    print("2-      print(cpf) ")
+    print("3-    'ira printar o um cpf válido' ")
+    print("")
+    print("\033[32m-=-=-=-=-=-=-=-= Funções Diversas...\033[37m")
+    print("")
+    print("Essas são funções mais aleatórias, mas que podem ser muito úteis, mas aqui vou explicar uma por uma, pois a forma de usar tambem é diversa ")
+    print("")
+    print("1- modo de cor no terminal, essa função irá retornar 2 variaveis, a primeira será o estilo escolhido e a segunda é o estilo base do terminal...")
+    print("2- Ex = tema,base = coresTerminal(1,4,0)")
+    print("3- A função ira receber 3 argumentos, relacionados ao; 1º Estilo de fonte / 2º cor de texto / 3º cor de fundo")
+    print("4- Segue a tabela referente ao valor de cada cor e estilo;")
+    print("5- *Estilo*;")
+    print("")
+    print("6- / 0 = \033[0mPadrão\033[0m / 1 = \033[1mNegrito\033[0m / 2 = \033[4mSublinhado\033[0m / 3 = \033[7mNegativo\033[0m")
+    print("")
+    print("7- *Cor de Texto*;")
+    print("")
+    print("8- / 0 = \033[37mPadrão\033[37m / 1 = \033[30mCinza\033[37m / 2 = \033[31mVermelho\033[37m / 3 = \033[32mVerde\033[37m / 4 = \033[33mAmarelo\033[37m / 5 = \033[34mRoxo\033[37m / 6 = \033[35mRosa\033[37m / 7 = \033[36mAzul\033[37m")
+    print("")
+    print("7- *Cor de Fundo*;")
+    print("")
+    print("8- / 0 = \033[40mPadrão\033[40m / 1 = \033[47mCinza\033[40m / 2 = \033[41mVermelho\033[40m / 3 = \033[42mVerde\033[40m / 4 = \033[43mAmarelo\033[40m / 5 = \033[44mRoxo\033[40m / 6 = \033[45mRosa\033[40m / 7 = \033[46mAzul\033[40m")
+    print("")
+  
+
+
+instruções()
+
 
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Verificadores, retorna variavel False or True;
 
@@ -39,7 +93,7 @@ def verificarEmail(Email):
         print("\033[31mEmail Inválido\033[37m")
     return Verificação
 
-## CPF;
+## CPF, inserir valor no formato de STRING!;
 def verificarCPF(cpf):
     ## Criando as Variavéis para a primeira conta;
     Verificação = True
@@ -182,37 +236,73 @@ def gerarTokens():
     token =''.join(tokenL)
     return token
 
-def gerarDataAniversário():
-    pass
-
+## Gera apenas CPF Válidos;
 def gerarCPF():
     Verificação = False
     while not Verificação:
         ## Declarando Váriaveis;
         cpf1 = []
-        contador = 0
         ## Criação de CPF;
         for i in range (1,12):
             i = random.randint(0,9)
+            i = str(i)
             cpf1.append(i)
         cpf = "".join(cpf1)
-        print(cpf)
+        os.system("cls")
+        Verificação = verificarCPF(cpf)
+    print(cpf)
 
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Diversor, retornam uma ou mais informações;
 
- ## Declarando Váriaveis;
-cpf1 = []
-## Criação de CPF;
-for i in range (1,12):
-    i = random.randint(0,9)
-    cpf1.append(i)
-cpf1 = str(cpf1)
-cpf = "".join(cpf1)
-print(cpf)
-        
+# Insira o valor correspondente a cor desejada, e a função ira retornar 2 valores: 1º a cor escolhida / 2º a cor original do teminal
+# 1 = Cinza / 2 = Vermelho / 3 = Verde / 4 = Amarelo / 5 = Roxo / 6 = Rosa / 7 = Azul 
+# EX: a,base = coresTerminal(7) 
+#     print(f"{a}Mudando de cor{base} e retornando a cor Original!")
+def coresTerminal(Estilo,Cor,Fundo):
+    match Estilo:
+        case 0:
+            estilo = "0" ## Padrão
+        case 1:
+            estilo = "1" ## Negrito
+        case 2:
+            estilo = "4" ## Sublinhado 
+        case 3:
+            estilo = "7" ## Negativo
+    match Cor:
+        case 0:
+            cor = "37" ## Padrão
+        case 1:
+            cor = "30" ## Cinza
+        case 2:
+            cor = "31" ## Vermelho
+        case 3:
+            cor = "32" ## Verde
+        case 4:
+            cor = "33" ## Amarelo
+        case 5:
+            cor = "34" ## Roxo
+        case 6:
+            cor = "35" ## Rosa
+        case 7:
+            cor = "36" ## Azul
+    match Fundo:
+        case 0:
+            fundo = "40" ## Padrão
+        case 1:
+            fundo = "47" ## Cinza
+        case 2:
+            fundo = "41" ## Vermelho
+        case 3:
+            fundo = "42" ## Verde
+        case 4:
+            fundo = "43" ## Amarelo
+        case 5:
+            fundo = "44" ## Roxo
+        case 6:
+            fundo = "45" ## Rosa
+        case 7:
+            fundo = "46" ## Azul
+    base = "\033[0:37:40m"
+    padrão = (f"\033[{estilo};{cor};{fundo}m")
 
-#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Modo de Uso;
-
-# Importe o arquivo "Ferramentas.py";
-# Crie um variavel para receber a informação da função EX: nome = gerarNome() ;
-# Nos métodos de Verificação, é nescessário inserir a informação na função, e ela vai te retornar True ou False;
-# Faça um bom uso e fique a vontade para acrescentar outras informações no código;
+    return padrão,base
