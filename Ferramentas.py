@@ -254,10 +254,7 @@ def gerarCPF():
 
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Diversor, retornam uma ou mais informações;
 
-# Insira o valor correspondente a cor desejada, e a função ira retornar 2 valores: 1º a cor escolhida / 2º a cor original do teminal
-# 1 = Cinza / 2 = Vermelho / 3 = Verde / 4 = Amarelo / 5 = Roxo / 6 = Rosa / 7 = Azul 
-# EX: a,base = coresTerminal(7) 
-#     print(f"{a}Mudando de cor{base} e retornando a cor Original!")
+## Cores no Terminal;
 def coresTerminal(Estilo,Cor,Fundo):
     match Estilo:
         case 0:
@@ -302,7 +299,7 @@ def coresTerminal(Estilo,Cor,Fundo):
             fundo = "45" ## Rosa
         case 7:
             fundo = "46" ## Azul
-    base = "\033[0:37:40m"
+    base = "\033[0;37;40m"
     padrão = (f"\033[{estilo};{cor};{fundo}m")
 
     return padrão,base
